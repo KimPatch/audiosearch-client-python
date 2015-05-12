@@ -10,10 +10,10 @@ OAuth credentials are available from https://www.audiosear.ch/oauth/applications
 Example:
 
 ```python
-import audiosearch
+from audiosearch import Client
 
 # create a client
-client = Audiosearch.Client( oauth_id, oauth_secret )
+client = Client( oauth_id, oauth_secret )
 
 # fetch a show with id 1234
 show = client.get('/shows/1234')
@@ -26,9 +26,9 @@ episode = client.get('/episodes/5678')
 episode = client.get_episode(5678)
 
 # search
-res = client.search('episodes', { q: 'test' })
-res.results.each do |episode|
-  printf("[%s] %s (%s)\n", episode.id, episode.title, episode.show_title)
+res = client.search({ 'q':'test' }, 'episodes')
+for episode in res['results']:
+  printf("[%s] %s (%s)\n", episode['id'], episode['title'], episode['show_title'])
 end
 
 ```

@@ -3,9 +3,12 @@ Audiosear.ch Python Client
 https://www.audiosear.ch/developer/
 """
 
-from .core import exceptions
-from .utils import json_utils
-from .audiosearch import Client
+import sys
+import os
+import json
+import requests
+
+from client import *
 
 __version__ = '1.0.0'
 
