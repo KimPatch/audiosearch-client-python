@@ -35,11 +35,17 @@ end
 
 ## Development
 
-To run the Rspec tests, create a **.env** file in the checkout
+To run the unit tests, create a **.env** file in the checkout
 with the following environment variables set to meaningful values:
 
 ```
 AS_ID=somestring
 AS_SECRET=sekritstring
 AS_HOST=http://audiosear.ch.dev
+```
+
+Then run the tests:
+
+```bash
+make test
 ```
