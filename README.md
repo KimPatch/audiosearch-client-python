@@ -28,8 +28,7 @@ episode = client.get_episode(5678)
 # search
 res = client.search({ 'q':'test' }, 'episodes')
 for episode in res['results']:
-  printf("[%s] %s (%s)\n", episode['id'], episode['title'], episode['show_title'])
-end
+  print "[%s] %s (%s)" % ( episode['id'], episode['title'], episode['show_title'] )
 
 ```
 
