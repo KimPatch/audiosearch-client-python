@@ -12,6 +12,9 @@ from audiosearch import Client
 
 import pprint
 
+import dotenv
+dotenv.load_dotenv('.env')
+
 class TestSynopsis(TestCase):
 
     def setUp(self):

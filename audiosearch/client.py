@@ -12,9 +12,9 @@ class Client(object):
     version = '1.0.0'
 
     def __init__(self, oauth_key, oauth_secret, oauth_host='https://www.audiosear.ch'):
-        if oauth_key is None:
+        if not oauth_key:
             raise "OAuth key required"
-        if oauth_secret is None:
+        if not oauth_secret:
             raise "OAuth secret required"
         
         self.key = oauth_key
