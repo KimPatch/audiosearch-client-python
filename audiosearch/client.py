@@ -9,7 +9,7 @@ import pprint
 
 class Client(object):
 
-    version = '1.0.0'
+    version = '1.0.1'
 
     def __init__(self, oauth_key, oauth_secret, oauth_host='https://www.audiosear.ch'):
         if not oauth_key:
@@ -50,3 +50,11 @@ class Client(object):
     def get_episode(self, ep_id):
         return self.get('/episodes/'+str(ep_id))
 
+    def get_trending(self):
+        return self.get('/trending/')
+    
+    def get_related(self, id, type='episodes'):
+        return self.get('/'+type+'/'+str(id)+'/related/')
+    
+    def get_tastemakers(self, num_results=5):
+        return self.get('/tastemakers/episodes/'+str(num_results))
