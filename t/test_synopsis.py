@@ -37,6 +37,15 @@ class TestSynopsis(TestCase):
         episode_i = self.client.get_episode(3431)
         episode = self.client.get('/episodes/3431')
         self.assertEqual(episode_i['title'], episode['title'])
+        trending = self.client.get_trending()
+        trending_i = self.client.get('/trending/')
+        self.assertEqual(trending[0]['trend'], trending_i[0]['trend'])
+        tm = self.client.get_tastemakers(1)
+        tm_i = self.client.get('/tastemakers/episodes/1')
+        self.assertEqual(tm[0]['title'], tm_i[0]['title'])
+        rel = self.client.get_related(274)
+        rel_i = self.client.get('/episodes/274/related/')
+        self.assertEqual(rel[0]['title'], rel_i[0]['title'])
 
     def test_shows(self):
         show = self.client.get('/shows/74')
