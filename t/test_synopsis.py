@@ -42,7 +42,8 @@ class TestSynopsis(TestCase):
         self.assertEqual(trending[0]['trend'], trending_i[0]['trend'])
         tm = self.client.get_tastemakers(1)
         tm_i = self.client.get('/tastemakers/episodes/1')
-        self.assertEqual(tm[0]['title'], tm_i[0]['title'])
+        if len(tm) > 0:
+            self.assertEqual(tm[0]['title'], tm_i[0]['title'])
         rel = self.client.get_related(274)
         rel_i = self.client.get('/episodes/274/related/')
         self.assertEqual(rel[0]['title'], rel_i[0]['title'])
@@ -51,6 +52,9 @@ class TestSynopsis(TestCase):
         show = self.client.get('/shows/74')
         show_i = self.client.get_show(74)
         self.assertEqual(show['title'], show_i['title'])
+        # fetch with absolute url
+        show_abs = self.client.get(show_i['urls']['self'])
+        self.assertEqual(show_abs['id'], show_i['id'])
  
 
 if __name__ == '__main__':
