@@ -30,6 +30,15 @@ res = client.search({ 'q':'test' }, 'episodes')
 for episode in res['results']:
   print "[%s] %s (%s)" % ( episode['id'], episode['title'], episode['show_title'] )
 
+# tastemakers
+recs = client.get_tastemakers({'n': 5}) # type: 'episodes' is the default, may also specify 'type': 'shows'
+
+# trending
+trends = client.get_trending()
+
+# person
+person = client.get_person(1578)
+
 ```
 
 ## Development
