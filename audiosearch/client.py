@@ -66,3 +66,7 @@ class Client(object):
     
     def get_tastemakers(self, num_results=5):
         return self.get('/tastemakers/episodes/'+str(num_results))
+
+    def get_person(p_id):
+        return self.get('/people/'+str(p_id))
+        
