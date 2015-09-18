@@ -61,12 +61,13 @@ class Client(object):
     def get_trending(self):
         return self.get('/trending/')
     
-    def get_related(self, id, type='episodes'):
-        return self.get('/'+type+'/'+str(id)+'/related/')
+    def get_related(self, id, params={}):
+        type = params['type'] if ('type' in params) else 'episodes'
+        return self.get('/'+type+'/'+str(id)+'/related/', params)
     
     def get_tastemakers(self, num_results=5):
         return self.get('/tastemakers/episodes/'+str(num_results))
 
     def get_person(p_id):
         return self.get('/people/'+str(p_id))
-        
+
