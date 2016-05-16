@@ -8,7 +8,7 @@ setup(
   author = "Pop Up Archive",
   author_email = 'edison@popuparchive.com',
   url = 'https://github.com/popuparchive/audiosearch-client-python',
-  download_url = 'https://github.com/popuparchive/audiosearch-client-python/tarball/1.0.0',
+  download_url = 'https://github.com/popuparchive/audiosearch-client-python/tarball/1.0.1',
   keywords = ['podcasts', 'audio', 'search'],
   classifiers = [],
 )
