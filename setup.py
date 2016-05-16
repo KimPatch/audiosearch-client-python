@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
   name    = "audiosearch",
-  packages = [ "Audiosearch" ],
+  packages = [ "audiosearch" ],
   version = "1.0.0",
   description = 'Client to interact with the Audiosear.ch API',
   author = "Pop Up Archive",
