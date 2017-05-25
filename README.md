@@ -28,8 +28,21 @@ episode = client.get_episode(5678)
 # get related content for an episode or show
 related = client.get_related(15, {'type': 'shows', 'size': 5, 'from': 5}) # id is required, type: 'episodes' is default
 
-# search
+# search episodes
 res = client.search({ 'q':'test' }, 'episodes')
+
+# get the next page of results
+res = client.search({ 'q':'test', 'page':2 }, 'episodes')
+
+# episode search restricted to a single field
+res = client.search({'q':'title:Example Podcast Episode')
+
+# search episodes with a filter
+res = client.search({'q':'test','filters':"['show_id':74]"}, 'episodes')
+
+# search episodes with multiple filters
+res = client.search({"q":"test", "filters[show_id]":74, "filters[transcripts.transcript]":"experiment"}, 'episodes')
+
 for episode in res['results']:
   print "[%s] %s (%s)" % ( episode['id'], episode['title'], episode['show_title'] )
 

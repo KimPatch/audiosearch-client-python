@@ -7,6 +7,7 @@ import requests
 from base64 import b64encode
 import pprint
 import re
+from urllib import urlencode
 
 class Client(object):
 
@@ -17,7 +18,7 @@ class Client(object):
             raise Exception( "OAuth key required" )
         if not oauth_secret:
             raise Exception( "OAuth secret required" )
-        
+
         self.key = oauth_key
         self.secret = oauth_secret
         self.host = oauth_host
@@ -45,7 +46,7 @@ class Client(object):
         if not abs_url.match(url):
             url = self.host+'/api'+path
 
-        resp = requests.get(url, params=params, headers=headers)
+        resp = requests.get(url, params=urlencode(params), headers=headers)
         return resp.json()
 
     def search(self, params, type='episodes'):
@@ -60,14 +61,13 @@ class Client(object):
 
     def get_trending(self):
         return self.get('/trending/')
-    
+
     def get_related(self, id, params={}):
         type = params['type'] if ('type' in params) else 'episodes'
         return self.get('/'+type+'/'+str(id)+'/related/', params)
-    
+
     def get_tastemakers(self, num_results=5):
         return self.get('/tastemakers/episodes/'+str(num_results))
 
     def get_person(p_id):
         return self.get('/people/'+str(p_id))
-

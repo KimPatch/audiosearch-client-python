@@ -34,8 +34,8 @@ class TestSynopsis(TestCase):
             self.assertTrue(hit['title'])
 
     def test_episodes(self):
-        episode_i = self.client.get_episode(3431)
-        episode = self.client.get('/episodes/3431')
+        episode_i = self.client.get_episode(5678)
+        episode = self.client.get('/episodes/5678')
         self.assertEqual(episode_i['title'], episode['title'])
         trending = self.client.get_trending()
         trending_i = self.client.get('/trending/')
@@ -43,19 +43,19 @@ class TestSynopsis(TestCase):
         tm = self.client.get_tastemakers(1)
         tm_i = self.client.get('/tastemakers/episodes/1')
         if len(tm) > 0:
-            self.assertEqual(tm[0]['title'], tm_i[0]['title'])
-        rel = self.client.get_related(274)
-        rel_i = self.client.get('/episodes/274/related/')
+            self.assertEqual(tm[0]['episode']['title'], tm_i[0]['episode']['title'])
+        rel = self.client.get_related(15)
+        rel_i = self.client.get('/episodes/15/related/')
         self.assertEqual(rel[0]['title'], rel_i[0]['title'])
 
     def test_shows(self):
-        show = self.client.get('/shows/74')
-        show_i = self.client.get_show(74)
+        show = self.client.get('/shows/1234')
+        show_i = self.client.get_show(1234)
         self.assertEqual(show['title'], show_i['title'])
         # fetch with absolute url
         show_abs = self.client.get(show_i['urls']['self'])
         self.assertEqual(show_abs['id'], show_i['id'])
- 
+
 
 if __name__ == '__main__':
     unittest.main()
