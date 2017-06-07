@@ -7,7 +7,10 @@ import requests
 from base64 import b64encode
 import pprint
 import re
-from urllib import urlencode
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
 
 class Client(object):
 
