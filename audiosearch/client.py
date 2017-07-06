@@ -14,7 +14,7 @@ except ImportError:
 
 class Client(object):
 
-    version = '1.0.2'
+    version = '1.0.3'
 
     def __init__(self, oauth_key, oauth_secret, oauth_host='https://www.audiosear.ch'):
         if not oauth_key:
