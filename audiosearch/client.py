@@ -7,7 +7,10 @@ import requests
 from base64 import b64encode
 import pprint
 import re
-from urllib import urlencode
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
 
 class Client(object):
 
@@ -26,7 +29,9 @@ class Client(object):
         # get oauth token
         params = {'grant_type':'client_credentials'}
         unencoded_sig = "{}:{}".format(self.key, self.secret)
+        unencoded_sig = unencoded_sig.encode('utf-8')
         signature = b64encode(unencoded_sig)
+        signature = signature.decode('utf-8')
         headers = {'Authorization': "Basic {}".format(signature),
                    'Content-Type': 'application/x-www-form-urlencoded'}
         response = requests.post(self.host+'/oauth/token', params=params, headers=headers)
